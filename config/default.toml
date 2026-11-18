@@ -1,0 +1,72 @@
+# Settings for the largemouth bass case study (fingerling feed, 10 to <50 g; GB/T 22919.9-2024).
+
+[data]
+adc_references = "data/example/adc_largemouth_bass_references.csv"
+ingredients = "data/ingredient_database.csv"
+adc_literature = "data/example/adc_largemouth_bass.csv"   # ADCs measured in largemouth bass, for comparison only
+
+[nutrients]            # % of as-fed feed (Table 1)
+cp_min = 42.0         # GB/T 22919.9-2024, fingerling feed
+cp_max = 54.0         # GB/T 22919.9-2024
+lipid_min = 7.0       # GB/T 22919.9-2024
+lipid_max = 12.0      # study setting
+fibre_max = 5.0       # GB/T 22919.9-2024
+ash_max = 15.0        # GB/T 22919.9-2024
+starch_max = 15.0     # study setting
+lys_min = 3.0         # GB/T 22919.9-2024
+lys_cp_min = 5.5      # GB/T 22919.9-2024
+p_min = 1.0           # GB/T 22919.9-2024
+p_max = 2.2           # GB/T 22919.9-2024
+dm_min = 89.0         # moisture <= 11 %, GB/T 22919.9-2024
+ge_abs_min = 12.5      # MJ/kg
+ge_rel_min = 0.97      # candidates keep >= 97 % of the benchmark gross energy
+plant_max = 45.0       # plant meals, brans and flours together (oils excluded)
+premix_kg = 20.0      # identical in all diets; not counted in nutrients, cost or impacts
+premix_dm = 0.0
+
+[reference]
+fishmeal_levels = [350.0, 450.0, 550.0]
+labels = ["FM35", "FM45", "FM55"]
+benchmark = "FM45"
+
+[candidates]
+fishmeal_min = 300.0
+fishmeal_max = 450.0
+n_random_objectives = 2000
+eps_rel = 1e-4
+dedup_decimals = 4
+vertex_seed = 20261006
+n_combinations = 1000
+k_min = 2
+k_max = 5
+mix_seed = 20261007
+
+[rules]                # eligibility rules R1-R4 and cleaner-score weights
+cost_tol = 0.10
+require_gwp = true
+min_reduced = 4
+burden_tol = 0.10
+w_cost = 0.5
+w_env = 0.5
+w_burden = 2.0
+
+[uncertainty]
+price_samples = 2000
+price_samples_correlated = 2000
+price_correlations = [0.3, 0.6, 0.9]
+price_seed = 20261008
+lca_samples = 2000
+lca_spreads = [0.30, 0.50]
+lca_seed = 20261009
+
+[benchmarks]
+gl_impact_cap = 1.05
+gl_alpha_step = 0.01
+
+[growth]
+days = 200.0          # maximum horizon; the simulation stops at w_target_g
+w0_g = 10.0
+w_target_g = 50.0
+temperature_c = 28.0
+intake_cap_bw = 0.03
+n_fish = 2000

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Cleaner aquafeed formulation screening framework"
+version: 1.0.0
+license: PolyForm-Noncommercial-1.0.0
+authors:
+  - name: "AUTHORS"
+preferred-citation:
+  type: article
+  title: "A cleaner aquafeed formulation screening framework under nutritional, economic and environmental constraints for largemouth bass"
+  authors:
+    - name: "AUTHORS"
+  year: 2026
